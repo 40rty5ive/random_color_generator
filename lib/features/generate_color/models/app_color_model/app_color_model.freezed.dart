@@ -129,12 +129,13 @@ class __$$_AppColorModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppColorModel with DiagnosticableTreeMixin implements _AppColorModel {
+class _$_AppColorModel extends _AppColorModel with DiagnosticableTreeMixin {
   const _$_AppColorModel(
       {required this.alpha,
       required this.red,
       required this.green,
-      required this.blue});
+      required this.blue})
+      : super._();
 
   factory _$_AppColorModel.fromJson(Map<String, dynamic> json) =>
       _$$_AppColorModelFromJson(json);
@@ -193,12 +194,13 @@ class _$_AppColorModel with DiagnosticableTreeMixin implements _AppColorModel {
   }
 }
 
-abstract class _AppColorModel implements AppColorModel {
+abstract class _AppColorModel extends AppColorModel {
   const factory _AppColorModel(
       {required final int alpha,
       required final int red,
       required final int green,
       required final int blue}) = _$_AppColorModel;
+  const _AppColorModel._() : super._();
 
   factory _AppColorModel.fromJson(Map<String, dynamic> json) =
       _$_AppColorModel.fromJson;

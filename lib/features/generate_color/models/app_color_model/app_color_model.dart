@@ -21,6 +21,8 @@ class AppColorModel with _$AppColorModel {
     required int blue,
   }) = _AppColorModel;
 
+  const AppColorModel._();
+
   /// A constructor that returns a random [AppColorModel].
   factory AppColorModel.random() {
     final random = Random();
