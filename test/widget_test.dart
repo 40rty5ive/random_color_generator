@@ -1,29 +1,31 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:random_color_generator/app.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:random_color_generator/general_export.dart';
+
+class MockStorage extends Mock implements Storage {}
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const App());
+  late Storage storage;
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  setUp(() {
+    storage = MockStorage();
+    when(
+      () => storage.write(any(), any<dynamic>()),
+    ).thenAnswer((invocation) async {
+      return;
+    });
+    HydratedBloc.storage = storage;
+    Bloc.observer = AppBlocObserver();
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  testWidgets('Main test', (WidgetTester tester) async {
+    await tester.pumpWidget(const AppWidget());
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Hello there'), findsOneWidget);
+
+    await tester.tap(find.text('Hello there'));
+
+    await tester.longPress(find.text('Hello there'));
   });
 }

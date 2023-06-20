@@ -13,5 +13,5 @@ void main() async {
   );
   Bloc.observer = AppBlocObserver();
 
-  runApp(const App());
+  runApp(const AppWidget());
 }

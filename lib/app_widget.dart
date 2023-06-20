@@ -6,9 +6,9 @@ import 'package:random_color_generator/general_export.dart';
 ///
 /// Contains [MaterialApp].
 /// {@endtemplate}
-class App extends StatelessWidget {
+class AppWidget extends StatelessWidget {
   /// {@macro app}
-  const App({super.key});
+  const AppWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
