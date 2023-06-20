@@ -7,7 +7,12 @@ part 'generate_color_state.dart';
 part 'generate_color_bloc.freezed.dart';
 part 'generate_color_bloc.g.dart';
 
-class GenerateColorBloc extends HydratedBloc<GenerateColorEvent, GenerateColorState> {
+/// {@template generate_color_bloc}
+/// A simple [HydratedBloc] that generates and stores a random color.
+/// {@endtemplate}
+class GenerateColorBloc
+    extends HydratedBloc<GenerateColorEvent, GenerateColorState> {
+  /// {@macro generate_color_bloc}
   GenerateColorBloc()
       : super(
           GenerateColorState(

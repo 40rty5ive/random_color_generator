@@ -3,7 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:random_color_generator/general_export.dart';
 
+/// {@template home_page}
+/// Home page of the application
+/// {@endtemplate}
 class HomePage extends StatefulWidget {
+  /// {@macro home_page}
   const HomePage({super.key});
 
   @override
@@ -27,12 +31,7 @@ class _HomePageState extends State<HomePage> {
               _copyColorToClipboard(color: curentColor);
             },
             child: Scaffold(
-              backgroundColor: Color.fromARGB(
-                curentColor.alpha,
-                curentColor.red,
-                curentColor.green,
-                curentColor.blue,
-              ),
+              backgroundColor: curentColor.toMaterialColor(),
               body: Center(
                 child: Text(
                   'Hello there',
@@ -47,9 +46,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _copyColorToClipboard({required AppColorModel color}) async {
+    final formatedColor = color.formatToString();
     await Clipboard.setData(
       ClipboardData(
-        text: '''argb(${color.alpha}, ${color.red}, ${color.green}, ${color.blue})''',
+        text: formatedColor,
       ),
     ).then(
       (_) {
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           ..showSnackBar(
             SnackBar(
               content: Text(
-                '''Copied: argb(${color.alpha}, ${color.red}, ${color.green}, ${color.blue})''',
+                'Copied: $formatedColor',
               ),
               backgroundColor: Colors.green,
               behavior: SnackBarBehavior.floating,

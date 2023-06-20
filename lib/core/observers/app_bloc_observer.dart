@@ -1,7 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
-class MyGlobalObserver extends BlocObserver {
+/// Global observer for application [Bloc]s.
+///
+/// Initialization takes place in the main function.
+class AppBlocObserver extends BlocObserver {
   @override
   void onEvent(Bloc<dynamic, dynamic> bloc, Object? event) {
     super.onEvent(bloc, event);

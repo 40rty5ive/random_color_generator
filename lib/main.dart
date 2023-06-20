@@ -8,7 +8,7 @@ void main() async {
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: await getApplicationDocumentsDirectory(),
   );
-  Bloc.observer = MyGlobalObserver();
+  Bloc.observer = AppBlocObserver();
 
   runApp(const App());
 }

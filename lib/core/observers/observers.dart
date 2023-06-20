@@ -1,1 +1,1 @@
-export 'my_global_observer.dart';
+export 'app_bloc_observer.dart';
