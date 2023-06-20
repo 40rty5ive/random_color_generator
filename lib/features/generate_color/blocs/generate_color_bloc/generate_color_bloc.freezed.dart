@@ -34,17 +34,17 @@ mixin _$GenerateColorEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_generateColor value) generateColor,
+    required TResult Function(_GenerateColorEvent value) generateColor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_generateColor value)? generateColor,
+    TResult? Function(_GenerateColorEvent value)? generateColor,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_generateColor value)? generateColor,
+    TResult Function(_GenerateColorEvent value)? generateColor,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,25 +69,25 @@ class _$GenerateColorEventCopyWithImpl<$Res, $Val extends GenerateColorEvent>
 }
 
 /// @nodoc
-abstract class _$$_generateColorCopyWith<$Res> {
-  factory _$$_generateColorCopyWith(
-          _$_generateColor value, $Res Function(_$_generateColor) then) =
-      __$$_generateColorCopyWithImpl<$Res>;
+abstract class _$$_GenerateColorEventCopyWith<$Res> {
+  factory _$$_GenerateColorEventCopyWith(_$_GenerateColorEvent value,
+          $Res Function(_$_GenerateColorEvent) then) =
+      __$$_GenerateColorEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_generateColorCopyWithImpl<$Res>
-    extends _$GenerateColorEventCopyWithImpl<$Res, _$_generateColor>
-    implements _$$_generateColorCopyWith<$Res> {
-  __$$_generateColorCopyWithImpl(
-      _$_generateColor _value, $Res Function(_$_generateColor) _then)
+class __$$_GenerateColorEventCopyWithImpl<$Res>
+    extends _$GenerateColorEventCopyWithImpl<$Res, _$_GenerateColorEvent>
+    implements _$$_GenerateColorEventCopyWith<$Res> {
+  __$$_GenerateColorEventCopyWithImpl(
+      _$_GenerateColorEvent _value, $Res Function(_$_GenerateColorEvent) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_generateColor implements _generateColor {
-  const _$_generateColor();
+class _$_GenerateColorEvent implements _GenerateColorEvent {
+  const _$_GenerateColorEvent();
 
   @override
   String toString() {
@@ -97,7 +97,7 @@ class _$_generateColor implements _generateColor {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_generateColor);
+        (other.runtimeType == runtimeType && other is _$_GenerateColorEvent);
   }
 
   @override
@@ -134,7 +134,7 @@ class _$_generateColor implements _generateColor {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_generateColor value) generateColor,
+    required TResult Function(_GenerateColorEvent value) generateColor,
   }) {
     return generateColor(this);
   }
@@ -142,7 +142,7 @@ class _$_generateColor implements _generateColor {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_generateColor value)? generateColor,
+    TResult? Function(_GenerateColorEvent value)? generateColor,
   }) {
     return generateColor?.call(this);
   }
@@ -150,7 +150,7 @@ class _$_generateColor implements _generateColor {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_generateColor value)? generateColor,
+    TResult Function(_GenerateColorEvent value)? generateColor,
     required TResult orElse(),
   }) {
     if (generateColor != null) {
@@ -160,17 +160,19 @@ class _$_generateColor implements _generateColor {
   }
 }
 
-abstract class _generateColor implements GenerateColorEvent {
-  const factory _generateColor() = _$_generateColor;
+abstract class _GenerateColorEvent implements GenerateColorEvent {
+  const factory _GenerateColorEvent() = _$_GenerateColorEvent;
+}
+
+GenerateColorState _$GenerateColorStateFromJson(Map<String, dynamic> json) {
+  return _GenerateColorState.fromJson(json);
 }
 
 /// @nodoc
 mixin _$GenerateColorState {
-  int get alpha => throw _privateConstructorUsedError;
-  int get red => throw _privateConstructorUsedError;
-  int get green => throw _privateConstructorUsedError;
-  int get blue => throw _privateConstructorUsedError;
+  AppColorModel get color => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $GenerateColorStateCopyWith<GenerateColorState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -182,7 +184,9 @@ abstract class $GenerateColorStateCopyWith<$Res> {
           GenerateColorState value, $Res Function(GenerateColorState) then) =
       _$GenerateColorStateCopyWithImpl<$Res, GenerateColorState>;
   @useResult
-  $Res call({int alpha, int red, int green, int blue});
+  $Res call({AppColorModel color});
+
+  $AppColorModelCopyWith<$Res> get color;
 }
 
 /// @nodoc
@@ -198,29 +202,22 @@ class _$GenerateColorStateCopyWithImpl<$Res, $Val extends GenerateColorState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? alpha = null,
-    Object? red = null,
-    Object? green = null,
-    Object? blue = null,
+    Object? color = null,
   }) {
     return _then(_value.copyWith(
-      alpha: null == alpha
-          ? _value.alpha
-          : alpha // ignore: cast_nullable_to_non_nullable
-              as int,
-      red: null == red
-          ? _value.red
-          : red // ignore: cast_nullable_to_non_nullable
-              as int,
-      green: null == green
-          ? _value.green
-          : green // ignore: cast_nullable_to_non_nullable
-              as int,
-      blue: null == blue
-          ? _value.blue
-          : blue // ignore: cast_nullable_to_non_nullable
-              as int,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as AppColorModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AppColorModelCopyWith<$Res> get color {
+    return $AppColorModelCopyWith<$Res>(_value.color, (value) {
+      return _then(_value.copyWith(color: value) as $Val);
+    });
   }
 }
 
@@ -232,7 +229,10 @@ abstract class _$$_GenerateColorStateCopyWith<$Res>
       __$$_GenerateColorStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int alpha, int red, int green, int blue});
+  $Res call({AppColorModel color});
+
+  @override
+  $AppColorModelCopyWith<$Res> get color;
 }
 
 /// @nodoc
@@ -246,53 +246,31 @@ class __$$_GenerateColorStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? alpha = null,
-    Object? red = null,
-    Object? green = null,
-    Object? blue = null,
+    Object? color = null,
   }) {
     return _then(_$_GenerateColorState(
-      alpha: null == alpha
-          ? _value.alpha
-          : alpha // ignore: cast_nullable_to_non_nullable
-              as int,
-      red: null == red
-          ? _value.red
-          : red // ignore: cast_nullable_to_non_nullable
-              as int,
-      green: null == green
-          ? _value.green
-          : green // ignore: cast_nullable_to_non_nullable
-              as int,
-      blue: null == blue
-          ? _value.blue
-          : blue // ignore: cast_nullable_to_non_nullable
-              as int,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as AppColorModel,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_GenerateColorState implements _GenerateColorState {
-  const _$_GenerateColorState(
-      {required this.alpha,
-      required this.red,
-      required this.green,
-      required this.blue});
+  const _$_GenerateColorState({required this.color});
+
+  factory _$_GenerateColorState.fromJson(Map<String, dynamic> json) =>
+      _$$_GenerateColorStateFromJson(json);
 
   @override
-  final int alpha;
-  @override
-  final int red;
-  @override
-  final int green;
-  @override
-  final int blue;
+  final AppColorModel color;
 
   @override
   String toString() {
-    return 'GenerateColorState(alpha: $alpha, red: $red, green: $green, blue: $blue)';
+    return 'GenerateColorState(color: $color)';
   }
 
   @override
@@ -300,14 +278,12 @@ class _$_GenerateColorState implements _GenerateColorState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GenerateColorState &&
-            (identical(other.alpha, alpha) || other.alpha == alpha) &&
-            (identical(other.red, red) || other.red == red) &&
-            (identical(other.green, green) || other.green == green) &&
-            (identical(other.blue, blue) || other.blue == blue));
+            (identical(other.color, color) || other.color == color));
   }
 
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, alpha, red, green, blue);
+  int get hashCode => Object.hash(runtimeType, color);
 
   @JsonKey(ignore: true)
   @override
@@ -315,23 +291,24 @@ class _$_GenerateColorState implements _GenerateColorState {
   _$$_GenerateColorStateCopyWith<_$_GenerateColorState> get copyWith =>
       __$$_GenerateColorStateCopyWithImpl<_$_GenerateColorState>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_GenerateColorStateToJson(
+      this,
+    );
+  }
 }
 
 abstract class _GenerateColorState implements GenerateColorState {
-  const factory _GenerateColorState(
-      {required final int alpha,
-      required final int red,
-      required final int green,
-      required final int blue}) = _$_GenerateColorState;
+  const factory _GenerateColorState({required final AppColorModel color}) =
+      _$_GenerateColorState;
+
+  factory _GenerateColorState.fromJson(Map<String, dynamic> json) =
+      _$_GenerateColorState.fromJson;
 
   @override
-  int get alpha;
-  @override
-  int get red;
-  @override
-  int get green;
-  @override
-  int get blue;
+  AppColorModel get color;
   @override
   @JsonKey(ignore: true)
   _$$_GenerateColorStateCopyWith<_$_GenerateColorState> get copyWith =>
