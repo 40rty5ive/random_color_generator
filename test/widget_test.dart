@@ -55,4 +55,20 @@ void main() {
     await tester.pump();
     expect(find.textContaining(helloSnackBar), findsOneWidget);
   });
+
+  testWidgets('Test Clipboard', (WidgetTester tester) async {
+    await tester.pumpWidget(const AppWidget());
+
+    expect(find.text('Hello there'), findsOneWidget);
+
+    ClipboardData? data = await Clipboard.getData(Clipboard.kTextPlain);
+
+    expect(data, isNull);
+
+    await tester.longPress(find.text('Hello there'));
+
+    data = await Clipboard.getData(Clipboard.kTextPlain);
+
+    expect(data, isNotNull);
+  });
 }
