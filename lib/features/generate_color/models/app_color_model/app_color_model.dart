@@ -14,6 +14,10 @@ class AppColorModel with _$AppColorModel {
   static const _maxARGBcomponentValue = 256;
 
   /// {@macro app_color_model}
+  @Assert('0 <= alpha && alpha <= 255')
+  @Assert('0 <= red && red <= 255')
+  @Assert('0 <= green && green <= 255')
+  @Assert('0 <= blue && blue <= 255')
   const factory AppColorModel({
     required int alpha,
     required int red,

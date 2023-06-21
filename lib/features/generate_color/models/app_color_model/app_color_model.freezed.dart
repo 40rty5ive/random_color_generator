@@ -135,7 +135,11 @@ class _$_AppColorModel extends _AppColorModel with DiagnosticableTreeMixin {
       required this.red,
       required this.green,
       required this.blue})
-      : super._();
+      : assert(0 <= alpha && alpha <= 255),
+        assert(0 <= red && red <= 255),
+        assert(0 <= green && green <= 255),
+        assert(0 <= blue && blue <= 255),
+        super._();
 
   factory _$_AppColorModel.fromJson(Map<String, dynamic> json) =>
       _$$_AppColorModelFromJson(json);
