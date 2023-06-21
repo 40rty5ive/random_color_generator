@@ -1,12 +1,39 @@
-# flutter_project_template
-📖 Template for flutter projects using solid_lints, CI for tests and analysis.
+# Random Color Generator
 
-- Uses latest stable flutter
-- Repo name as your project name
-- Organization from your profile email address or default
+![Demonstration of work](/demonstration_of_work.gif)
 
-# Usage
-1. Press "Use this template" on the menu.
-2. Fill Github form with your new repo name and press "Create repository from template"
-3. Wait for it to be created and set up action is complete. In a couple of minutes, you'll see the flutter project created in your repo once Github Actions are complete.
-4. Clone and code.
+## Description
+
+The app generates a random color after each tap on the screen. To copy the generated color, press and hold on the screen. The last generated color is saved even after closing the application
+
+## Using
+
+### Flutter version
+
+To run the project you need to have flutter version 3.10.5 or higher. [Here](https://docs.flutter.dev/release/upgrade) is how to change the flutter version
+
+### Ryn project
+
+To start the project, use the ``flutter run`` command or a special button of your idea
+
+## Comands
+
+### To run project
+
+``flutter run``
+
+### To generate files
+
+``dart run build_runner build --delete-conflicting-outputs``
+
+### To run all tests
+
+``flutter test``
+
+### To run analyzer
+
+``flutter analyze .``
+
+### Will run all tests and flutter analyzer
+
+``flutter test && flutter analyze .``
