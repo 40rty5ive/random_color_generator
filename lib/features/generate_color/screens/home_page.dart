@@ -6,15 +6,10 @@ import 'package:random_color_generator/general_export.dart';
 /// {@template home_page}
 /// Home page of the application
 /// {@endtemplate}
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   /// {@macro home_page}
   const HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -28,7 +23,7 @@ class _HomePageState extends State<HomePage> {
                   const GenerateColorEvent.generateColor(),
                 ),
             onLongPress: () {
-              _copyColorToClipboard(color: curentColor);
+              _copyColorToClipboard(color: curentColor, context: context);
             },
             child: Scaffold(
               backgroundColor: curentColor.toMaterialColor(),
@@ -45,7 +40,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Future<void> _copyColorToClipboard({required AppColorModel color}) async {
+  Future<void> _copyColorToClipboard({
+    required AppColorModel color,
+    required BuildContext context,
+  }) async {
     final formatedColor = color.formatToString();
     await Clipboard.setData(
       ClipboardData(
