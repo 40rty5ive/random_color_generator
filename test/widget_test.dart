@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -41,11 +41,11 @@ void main() {
     testWidgets('Test dispaly text', (WidgetTester tester) async {
       await tester.pumpWidget(const AppWidget());
 
-      expect(find.text('Hello there'), findsOneWidget);
+      expect(find.byType(RichText), findsOneWidget);
 
-      await tester.tap(find.text('Hello there'));
+      await tester.tap(find.byType(RichText));
 
-      await tester.longPress(find.text('Hello there'));
+      await tester.longPress(find.byType(RichText));
     });
 
     testWidgets('Test showing SnackBar', (WidgetTester tester) async {
@@ -67,13 +67,13 @@ void main() {
     testWidgets('Test Clipboard', (WidgetTester tester) async {
       await tester.pumpWidget(const AppWidget());
 
-      expect(find.text('Hello there'), findsOneWidget);
+      expect(find.byType(RichText), findsOneWidget);
 
       ClipboardData? data = await Clipboard.getData(Clipboard.kTextPlain);
 
       expect(data, isNull);
 
-      await tester.longPress(find.text('Hello there'));
+      await tester.longPress(find.byType(RichText));
 
       data = await Clipboard.getData(Clipboard.kTextPlain);
 
@@ -86,7 +86,11 @@ void main() {
       'Cneck bloc state type',
       build: () => GenerateColorBloc(),
       seed: () => GenerateColorState(
-        color: AppColorModel.random(),
+        backfroundColor: AppColorModel.random(),
+        textColorsList: List.generate(
+          GenerateColorBloc.defauldeWord.length,
+          (index) => AppColorModel.random(),
+        ),
       ),
       act: (bloc) => bloc.add(const GenerateColorEvent.generateColor()),
       expect: () => [isA<GenerateColorState>()],

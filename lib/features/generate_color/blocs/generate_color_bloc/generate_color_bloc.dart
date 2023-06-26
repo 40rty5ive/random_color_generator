@@ -12,11 +12,18 @@ part 'generate_color_bloc.g.dart';
 /// {@endtemplate}
 class GenerateColorBloc
     extends HydratedBloc<GenerateColorEvent, GenerateColorState> {
+  /// Defaulde Word
+  static const String defauldeWord = 'Hello there';
+
   /// {@macro generate_color_bloc}
   GenerateColorBloc()
       : super(
           GenerateColorState(
-            color: AppColorModel.random(),
+            backfroundColor: AppColorModel.random(),
+            textColorsList: List.generate(
+              defauldeWord.length,
+              (index) => AppColorModel.random(),
+            ),
           ),
         ) {
     on<_GenerateColorEvent>(_generateColor);
@@ -28,7 +35,11 @@ class GenerateColorBloc
   ) {
     emit(
       GenerateColorState(
-        color: AppColorModel.random(),
+        backfroundColor: AppColorModel.random(),
+        textColorsList: List.generate(
+          state.word.length,
+          (index) => AppColorModel.random(),
+        ),
       ),
     );
   }

@@ -5,7 +5,9 @@ part of 'generate_color_bloc.dart';
 class GenerateColorState with _$GenerateColorState {
   /// The only state that has only one [AppColorModel] field.
   const factory GenerateColorState({
-    required AppColorModel color,
+    required AppColorModel backfroundColor,
+    required List<AppColorModel> textColorsList,
+    @Default(GenerateColorBloc.defauldeWord) String word,
   }) = _GenerateColorState;
 
   /// The constructor is used to process [GenerateColorBloc]`s state

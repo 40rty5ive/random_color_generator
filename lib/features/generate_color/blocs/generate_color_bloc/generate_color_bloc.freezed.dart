@@ -170,7 +170,9 @@ GenerateColorState _$GenerateColorStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GenerateColorState {
-  AppColorModel get color => throw _privateConstructorUsedError;
+  AppColorModel get backfroundColor => throw _privateConstructorUsedError;
+  List<AppColorModel> get textColorsList => throw _privateConstructorUsedError;
+  String get word => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -184,9 +186,12 @@ abstract class $GenerateColorStateCopyWith<$Res> {
           GenerateColorState value, $Res Function(GenerateColorState) then) =
       _$GenerateColorStateCopyWithImpl<$Res, GenerateColorState>;
   @useResult
-  $Res call({AppColorModel color});
+  $Res call(
+      {AppColorModel backfroundColor,
+      List<AppColorModel> textColorsList,
+      String word});
 
-  $AppColorModelCopyWith<$Res> get color;
+  $AppColorModelCopyWith<$Res> get backfroundColor;
 }
 
 /// @nodoc
@@ -202,21 +207,31 @@ class _$GenerateColorStateCopyWithImpl<$Res, $Val extends GenerateColorState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? color = null,
+    Object? backfroundColor = null,
+    Object? textColorsList = null,
+    Object? word = null,
   }) {
     return _then(_value.copyWith(
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
+      backfroundColor: null == backfroundColor
+          ? _value.backfroundColor
+          : backfroundColor // ignore: cast_nullable_to_non_nullable
               as AppColorModel,
+      textColorsList: null == textColorsList
+          ? _value.textColorsList
+          : textColorsList // ignore: cast_nullable_to_non_nullable
+              as List<AppColorModel>,
+      word: null == word
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $AppColorModelCopyWith<$Res> get color {
-    return $AppColorModelCopyWith<$Res>(_value.color, (value) {
-      return _then(_value.copyWith(color: value) as $Val);
+  $AppColorModelCopyWith<$Res> get backfroundColor {
+    return $AppColorModelCopyWith<$Res>(_value.backfroundColor, (value) {
+      return _then(_value.copyWith(backfroundColor: value) as $Val);
     });
   }
 }
@@ -229,10 +244,13 @@ abstract class _$$_GenerateColorStateCopyWith<$Res>
       __$$_GenerateColorStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AppColorModel color});
+  $Res call(
+      {AppColorModel backfroundColor,
+      List<AppColorModel> textColorsList,
+      String word});
 
   @override
-  $AppColorModelCopyWith<$Res> get color;
+  $AppColorModelCopyWith<$Res> get backfroundColor;
 }
 
 /// @nodoc
@@ -246,13 +264,23 @@ class __$$_GenerateColorStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? color = null,
+    Object? backfroundColor = null,
+    Object? textColorsList = null,
+    Object? word = null,
   }) {
     return _then(_$_GenerateColorState(
-      color: null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
+      backfroundColor: null == backfroundColor
+          ? _value.backfroundColor
+          : backfroundColor // ignore: cast_nullable_to_non_nullable
               as AppColorModel,
+      textColorsList: null == textColorsList
+          ? _value._textColorsList
+          : textColorsList // ignore: cast_nullable_to_non_nullable
+              as List<AppColorModel>,
+      word: null == word
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -260,17 +288,32 @@ class __$$_GenerateColorStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_GenerateColorState implements _GenerateColorState {
-  const _$_GenerateColorState({required this.color});
+  const _$_GenerateColorState(
+      {required this.backfroundColor,
+      required final List<AppColorModel> textColorsList,
+      this.word = GenerateColorBloc.defauldeWord})
+      : _textColorsList = textColorsList;
 
   factory _$_GenerateColorState.fromJson(Map<String, dynamic> json) =>
       _$$_GenerateColorStateFromJson(json);
 
   @override
-  final AppColorModel color;
+  final AppColorModel backfroundColor;
+  final List<AppColorModel> _textColorsList;
+  @override
+  List<AppColorModel> get textColorsList {
+    if (_textColorsList is EqualUnmodifiableListView) return _textColorsList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_textColorsList);
+  }
+
+  @override
+  @JsonKey()
+  final String word;
 
   @override
   String toString() {
-    return 'GenerateColorState(color: $color)';
+    return 'GenerateColorState(backfroundColor: $backfroundColor, textColorsList: $textColorsList, word: $word)';
   }
 
   @override
@@ -278,12 +321,17 @@ class _$_GenerateColorState implements _GenerateColorState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GenerateColorState &&
-            (identical(other.color, color) || other.color == color));
+            (identical(other.backfroundColor, backfroundColor) ||
+                other.backfroundColor == backfroundColor) &&
+            const DeepCollectionEquality()
+                .equals(other._textColorsList, _textColorsList) &&
+            (identical(other.word, word) || other.word == word));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, color);
+  int get hashCode => Object.hash(runtimeType, backfroundColor,
+      const DeepCollectionEquality().hash(_textColorsList), word);
 
   @JsonKey(ignore: true)
   @override
@@ -301,14 +349,20 @@ class _$_GenerateColorState implements _GenerateColorState {
 }
 
 abstract class _GenerateColorState implements GenerateColorState {
-  const factory _GenerateColorState({required final AppColorModel color}) =
-      _$_GenerateColorState;
+  const factory _GenerateColorState(
+      {required final AppColorModel backfroundColor,
+      required final List<AppColorModel> textColorsList,
+      final String word}) = _$_GenerateColorState;
 
   factory _GenerateColorState.fromJson(Map<String, dynamic> json) =
       _$_GenerateColorState.fromJson;
 
   @override
-  AppColorModel get color;
+  AppColorModel get backfroundColor;
+  @override
+  List<AppColorModel> get textColorsList;
+  @override
+  String get word;
   @override
   @JsonKey(ignore: true)
   _$$_GenerateColorStateCopyWith<_$_GenerateColorState> get copyWith =>

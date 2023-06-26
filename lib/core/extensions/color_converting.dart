@@ -7,11 +7,13 @@ extension ColorConverting on AppColorModel {
   /// Convert the [AppColorModel] class to the [Color] class
   /// of the material package.
   Color toMaterialColor() {
-    return Color.fromARGB(
-      alpha,
+    final double opposite = alpha / 255;
+
+    return Color.fromRGBO(
       red,
       green,
       blue,
+      opposite,
     );
   }
 }
